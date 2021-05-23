@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import restaurantService from '../services/restaurantService';
 
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledForm = styled.form`
   width: 100%;
   display: flex;
@@ -33,6 +36,9 @@ const StyledForm = styled.form`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const AddRestaurant = () => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');

@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledTableRow = styled.tr`
   text-align: center;
   background: ${({ theme }) => theme.back1};
@@ -33,6 +36,9 @@ const StyledTableRow = styled.tr`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const RestaurantsTableItem = ({ restaurant }) => {
   function handleRowClick(e) {
     const tr = e.target.parentNode;
@@ -59,6 +65,9 @@ const RestaurantsTableItem = ({ restaurant }) => {
 
 export default RestaurantsTableItem;
 
+/* ------------------------------------------------------ */
+/*                        PROPTYPES                       */
+/* ------------------------------------------------------ */
 RestaurantsTableItem.propTypes = {
   restaurant: PropTypes.shape({
     id: PropTypes.string,

@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { setActiveSortButtonId } from '../redux/reducers/uiReducer';
+import PropTypes from 'prop-types';
+import { setActiveSortButtonId } from '../../redux/reducers/uiReducer';
 import { ArrowSortedUp } from '@styled-icons/typicons';
 import { ArrowSortedDown } from '@styled-icons/typicons';
 import { useDispatch, useSelector } from 'react-redux';
 
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledSortButtons = styled.div`
   display: flex;
   width: 100%;
@@ -44,6 +48,9 @@ const SortDecButton = styled(ArrowSortedDown)`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const SortButton = ({ categoryName, handleSortInc, handleSortDec }) => {
   const dispatch = useDispatch();
   const activeSortButtonId = useSelector(
@@ -71,3 +78,12 @@ const SortButton = ({ categoryName, handleSortInc, handleSortDec }) => {
 };
 
 export default SortButton;
+
+/* ------------------------------------------------------ */
+/*                        PROPTYPES                       */
+/* ------------------------------------------------------ */
+SortButton.propTypes = {
+  categoryName: PropTypes.string.isRequired,
+  handleSortInc: PropTypes.func.isRequired,
+  handleSortDec: PropTypes.func.isRequired,
+};

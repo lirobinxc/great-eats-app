@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledTitle = styled.h1`
   font-family: 'Pattaya', serif;
   font-size: 4rem;
@@ -15,6 +19,9 @@ const StyledTitle = styled.h1`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const Title = ({ text }) => {
   const isDarkTheme = useSelector((state) => state.ui.theme);
   const [glowCSS, setGlowCSS] = useState(null);
@@ -27,3 +34,10 @@ const Title = ({ text }) => {
 };
 
 export default Title;
+
+/* ------------------------------------------------------ */
+/*                        PROPTYPES                       */
+/* ------------------------------------------------------ */
+Title.propTypes = {
+  text: PropTypes.string.isRequired,
+};

@@ -9,8 +9,11 @@ import {
   sortRestaurantsByPriceRange,
   sortRestaurantsByName,
   sortRestaurantsByLocation,
-} from '../redux/reducers/restaurantsReducer';
+} from '../../redux/reducers/restaurantsReducer';
 
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledTable = styled.table`
   width: 90%;
   margin: 2rem 0;
@@ -36,6 +39,9 @@ const StyledTable = styled.table`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const RestaurantsTable = () => {
   const dispatch = useDispatch();
   const restaurants = useSelector((state) => state.restaurants.data);

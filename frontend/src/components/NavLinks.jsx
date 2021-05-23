@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleTheme } from '../redux/reducers/uiReducer';
+import { useSelector } from 'react-redux';
 import ToggleThemeButton from './ToggleThemeButton';
 
-/* STYLES */
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledNavLink = styled(NavLink)`
   display: inline-block;
   padding: 0.5rem;
@@ -14,8 +15,10 @@ const StyledNavLink = styled(NavLink)`
   margin-bottom: 2rem;
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const NavLinks = () => {
-  const dispatch = useDispatch();
   const theme = useSelector((state) => state.ui.theme);
   console.log({ theme });
 
