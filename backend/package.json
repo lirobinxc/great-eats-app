@@ -1,0 +1,23 @@
+{
+  "name": "great-eats-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand",
+    "test:watch": "NODE_ENV=test jest --verbose --runInBand --watch",
+    "test:coverage": "NODE_ENV=test jest --verbose --runInBand --coverage --detectOpenHandles"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
+  }
+}

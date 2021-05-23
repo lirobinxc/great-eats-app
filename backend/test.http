@@ -1,0 +1,28 @@
+### GET all restaurants
+GET http://localhost:8000/api/restaurants
+
+### GET restaurant with id 2
+GET http://localhost:8000/api/restaurants/2
+
+#### Create new restaurant
+POST http://localhost:8000/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Testing",
+  "location": "Fakeland",
+  "price_range": 5
+}
+
+### Update a restaurant
+PUT http://localhost:8000/api/restaurants/
+Content-Type: application/json
+
+{
+  "name": "Crabby Joes",
+  "price_range": 6
+}
+
+
+### DELETE
+DELETE http://localhost:8000/api/restaurants/8
