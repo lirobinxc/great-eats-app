@@ -1,5 +1,6 @@
 const express = require('express');
 const { setCors } = require('./middleware/cors');
+const ratingsRouter = require('./routers/ratingsRouter');
 const restaurantsRouter = require('./routers/restaurantsRouter');
 const reviewsRouter = require('./routers/reviewsRouter');
 
@@ -17,6 +18,7 @@ app.get('/api', (req, res) => {
 /* ROUTES */
 app.use('/api/restaurants', restaurantsRouter);
 app.use('/api/reviews', reviewsRouter);
+app.use('/api/ratings', ratingsRouter);
 
 /* POST-ROUTES MIDDLEWARE*/
 

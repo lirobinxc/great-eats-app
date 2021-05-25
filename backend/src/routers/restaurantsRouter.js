@@ -4,9 +4,9 @@ const db = require('../db');
 restaurantsRouter.get('/', async (req, res) => {
   // Query the database
   try {
-    const results = await db.query('SELECT * FROM restaurants ORDER BY id');
+    const restos = await db.query('SELECT * FROM restaurants ORDER BY id');
     // console.log('📣', results);
-    res.status(201).json(results.rows);
+    res.status(201).json(restos.rows);
   } catch (err) {
     res.status(400).json({ ERROR: err });
   }
@@ -31,10 +31,9 @@ restaurantsRouter.post('/', async (req, res) => {
 
   // Error checking: Improper body
   if (!body.name || !body.location || !body.price_range) {
-    res.status(400).json({
+    return res.status(400).json({
       error: 'POST requests must include name, location, & price_range',
     });
-    return;
   }
 
   // Query the database
