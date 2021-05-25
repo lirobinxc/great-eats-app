@@ -1,24 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 /* ------------------------------------------------------ */
 /*                         STYLES                         */
 /* ------------------------------------------------------ */
-const StyledStarRating = styled.div``;
+const StyledReviewCard = styled.div``;
 
 /* ------------------------------------------------------ */
 /*                        COMPONENT                       */
 /* ------------------------------------------------------ */
-const StarRating = ({ rating }) => {
-  return <StyledStarRating>{rating}</StyledStarRating>;
+const ReviewCard = ({ reviewInfo }) => {
+  return <StyledReviewCard></StyledReviewCard>;
 };
 
-export default StarRating;
+export default ReviewCard;
 
 /* ------------------------------------------------------ */
 /*                        PROPTYPES                       */
 /* ------------------------------------------------------ */
-StarRating.propTypes = {
-  ratings: PropTypes.number,
+ReviewCard.propTypes = {
+  reviewInfo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    restaurant_id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    review: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+  }),
 };

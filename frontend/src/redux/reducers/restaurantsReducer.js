@@ -1,13 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import ratingService from '../../services/ratingService';
 import restoService from '../../services/restaurantService';
 
-/* Async Thunks */
+/* ------------------------------------------------------ */
+/*                      ASYNC THUNKS                      */
+/* ------------------------------------------------------ */
 export const initRestaurants = createAsyncThunk(
   'restaurants/initRestaurants',
   async (arg, thunkAPI) => {
     try {
-      const response = await restoService.getAll();
-      return response;
+      const restos = await restoService.getAll();
+      const ratings = await ratingService.getAll();
+      const normalizedRestos = { all_restaurants: [] };
+      const normalizedRatings = { all_restaurants: [], all_reviews: [] };
+
+      // Normalize API data into an index (keyed by restaurant_id)
+      for (let resto of restos) {
+        normalizedRestos[resto.id] = resto;
+        normalizedRestos.all_restaurants.push(resto.id);
+      }
+      for (let rating of ratings) {
+        normalizedRatings[rating.restaurant_id] = rating;
+        normalizedRatings.all_restaurants.push(rating.restaurant_id);
+        normalizedRatings.all_reviews.push(rating.id);
+      }
+      console.log('📣', { normalizedRestos });
+
+      return normalizedRestos;
     } catch (err) {
       console.error(err);
       return thunkAPI.rejectWithValue(
@@ -25,10 +44,12 @@ export const initRestaurants = createAsyncThunk(
   }
 );
 
-/* MAIN SLICE */
+/* ------------------------------------------------------ */
+/*                   MAIN REDUCER SLICE                   */
+/* ------------------------------------------------------ */
 export const restaurantSlice = createSlice({
   name: 'restaurants',
-  initialState: { isLoading: true, isError: false, data: [] },
+  initialState: { isLoading: true, isError: false, data: {} },
   reducers: {
     addRestaurant: (state, action) => {
       state.data.push(action.payload);
@@ -98,7 +119,7 @@ export const restaurantSlice = createSlice({
   },
 });
 
-/* Normal Action Creators */
+/* --------------- Exports --------------- */
 export const {
   addRestaurant,
   deleteRestaurantById,
@@ -108,5 +129,4 @@ export const {
   sortRestaurantsByPriceRange,
 } = restaurantSlice.actions;
 
-/* Reducer */
 export default restaurantSlice.reducer;

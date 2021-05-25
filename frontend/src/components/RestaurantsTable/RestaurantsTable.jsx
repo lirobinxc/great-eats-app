@@ -34,7 +34,10 @@ const StyledTable = styled.table`
     td {
       overflow: auto;
       font-size: 1rem;
-      padding: 0rem;
+      padding: 0.5rem 0.3rem;
+    }
+    a {
+      padding: 0.5rem 0.3rem;
     }
   }
 `;
@@ -60,6 +63,9 @@ const RestaurantsTable = () => {
       <td>
         <Skeleton height={'calc(1.4rem + 20px)'} width={'100%'} />
       </td>
+      <td>
+        <Skeleton height={'calc(1.4rem + 20px)'} width={'100%'} />
+      </td>
     </tr>
   );
 
@@ -76,44 +82,61 @@ const RestaurantsTable = () => {
   }
 
   return (
-    <StyledTable>
-      <thead>
-        <tr>
-          <th>
-            Name{' '}
-            <SortButton
-              categoryName="name"
-              handleSortInc={() => handleSortByName('inc')}
-              handleSortDec={() => handleSortByName('dec')}
-            />
-          </th>
-          <th>
-            Location{' '}
-            <SortButton
-              categoryName="location"
-              handleSortInc={() => handleSortByLocation('inc')}
-              handleSortDec={() => handleSortByLocation('dec')}
-            />
-          </th>
-          <th>
-            Price Range{' '}
-            <SortButton
-              categoryName="price_range"
-              handleSortInc={() => handleSortByPriceRange('inc')}
-              handleSortDec={() => handleSortByPriceRange('dec')}
-            />
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {isLoading
-          ? skeleton
-          : restaurants &&
-            restaurants.map((ele) => (
-              <RestaurantsTableItem key={ele.id} restaurant={ele} />
-            ))}
-      </tbody>
-    </StyledTable>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+        overflowX: 'auto',
+      }}
+    >
+      <StyledTable>
+        <thead>
+          <tr>
+            <th>
+              Name
+              <SortButton
+                categoryName="name"
+                handleSortInc={() => handleSortByName('inc')}
+                handleSortDec={() => handleSortByName('dec')}
+              />
+            </th>
+            <th>
+              Location
+              <SortButton
+                categoryName="location"
+                handleSortInc={() => handleSortByLocation('inc')}
+                handleSortDec={() => handleSortByLocation('dec')}
+              />
+            </th>
+            <th>
+              Price Range
+              <SortButton
+                categoryName="price_range"
+                handleSortInc={() => handleSortByPriceRange('inc')}
+                handleSortDec={() => handleSortByPriceRange('dec')}
+              />
+            </th>
+            <th>
+              Rating
+              <SortButton
+                categoryName="price_range"
+                handleSortInc={() => handleSortByPriceRange('inc')}
+                handleSortDec={() => handleSortByPriceRange('dec')}
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {isLoading
+            ? skeleton
+            : restaurants.all_restaurants &&
+              restaurants.all_restaurants.map((id) => (
+                <RestaurantsTableItem key={id} restaurant={restaurants[id]} />
+              ))}
+        </tbody>
+      </StyledTable>
+    </div>
   );
 };
 

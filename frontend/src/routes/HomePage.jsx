@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import AddRestaurant from '../components/AddRestaurant';
 
 import NavLinks from '../components/NavLinks';
-import RestaurantsTable from '../components/RestaurantsTable';
+import RestaurantsTable from '../components/RestaurantsTable/RestaurantsTable';
 import Title from '../components/Title';
 
-/* STYLES */
+/* ------------------------------------------------------ */
+/*                         STYLES                         */
+/* ------------------------------------------------------ */
 const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,6 +20,9 @@ const StyledHomePage = styled.div`
   }
 `;
 
+/* ------------------------------------------------------ */
+/*                        COMPONENT                       */
+/* ------------------------------------------------------ */
 const HomePage = () => {
   useEffect(() => {
     document.title = `Home | ${process.env.REACT_APP_SITE_TITLE}`;

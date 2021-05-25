@@ -39,7 +39,7 @@ const StyledTableRow = styled.tr`
 /* ------------------------------------------------------ */
 /*                        COMPONENT                       */
 /* ------------------------------------------------------ */
-const RestaurantsTableItem = ({ restaurant }) => {
+const RestaurantsTableItem = ({ restaurant, ratings }) => {
   function handleRowClick(e) {
     const tr = e.target.parentNode;
     const id = tr.id;
@@ -53,6 +53,11 @@ const RestaurantsTableItem = ({ restaurant }) => {
       </td>
       <td>
         <Link to={`/restaurants/${restaurant.id}`}>{restaurant.location}</Link>
+      </td>
+      <td>
+        <Link to={`/restaurants/${restaurant.id}`}>
+          {restaurant.price_range}
+        </Link>
       </td>
       <td>
         <Link to={`/restaurants/${restaurant.id}`}>
